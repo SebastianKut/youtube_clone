@@ -23,3 +23,7 @@ export const registerUserHandeler = async (
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(error.message);
   }
 };
+
+export const showUserHandeler = async (req: Request, res: Response) => {
+  return res.send(req.currentUser);
+};
