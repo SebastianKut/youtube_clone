@@ -30,11 +30,11 @@ export const loginHandeler = async (
       .send('Invalid email or password');
 
   // sign jwt
-  const payload = JSON.stringify({
+  const payload = {
     username: user.username,
     email: user.email,
     id: user._id,
-  });
+  };
 
   const jwt = signJwt(payload);
 
