@@ -29,13 +29,13 @@ export const loginHandeler = async (
       .status(StatusCodes.UNAUTHORIZED)
       .send('Invalid email or password');
 
-  // sign jwt
   const payload = {
     username: user.username,
     email: user.email,
     id: user._id,
   };
 
+  // sign jwt
   const jwt = signJwt(payload);
 
   // add a cookie to the response

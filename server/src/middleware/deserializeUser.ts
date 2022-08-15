@@ -30,7 +30,6 @@ export const deserializeUser = (
   const decoded = verifyJwt(accessToken);
 
   if (decoded) {
-    console.log(decoded);
     req.currentUser = decoded;
   }
 
