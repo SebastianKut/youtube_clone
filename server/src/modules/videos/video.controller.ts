@@ -23,7 +23,6 @@ export const uploadVideoHandeler = async (req: Request, res: Response) => {
   const user = req.currentUser;
 
   const video = await createVideo({ owner: user!.id });
-  console.log('Im here', video);
 
   // Listen for file upload
   bb.on('file', async (_, file, info) => {
@@ -63,8 +62,8 @@ export const updateVideoHandeler = async (
 ) => {
   const { videoId } = req.params;
   const { title, description, published } = req.body;
-  const { id } = req.currentUser;
-  const loggedUserId = String(id);
+  const { currentUser } = req;
+  const loggedUserId = String(currentUser!.id);
 
   const video = await findVideo(videoId);
 

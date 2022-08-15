@@ -4,11 +4,17 @@ import { Request, Response, NextFunction } from 'express';
 import { JwtPayload } from 'jsonwebtoken';
 import { verifyJwt } from '../modules/auth/auth.utils';
 
+interface UserPayload {
+  username: string;
+  email: string;
+  id: string;
+}
+
 // add currentUser property to Request object so we can attach it to it
 declare global {
   namespace Express {
     interface Request {
-      currentUser?: string | JwtPayload | null;
+      currentUser?: UserPayload;
     }
   }
 }
@@ -30,7 +36,7 @@ export const deserializeUser = (
   const decoded = verifyJwt(accessToken);
 
   if (decoded) {
-    req.currentUser = decoded;
+    req.currentUser = decoded as UserPayload;
   }
 
   return next();

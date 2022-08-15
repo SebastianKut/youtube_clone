@@ -32,7 +32,7 @@ export const loginHandeler = async (
   const payload = {
     username: user.username,
     email: user.email,
-    id: user._id,
+    id: String(user._id),
   };
 
   // sign jwt
