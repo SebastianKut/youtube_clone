@@ -46,7 +46,7 @@ export const uploadVideoHandeler = async (req: Request, res: Response) => {
   bb.on('close', () => {
     res.writeHead(StatusCodes.CREATED, {
       Connection: 'close',
-      'COntent-Type': 'application/json',
+      'Content-Type': 'application/json',
     });
 
     res.write(JSON.stringify(video));
@@ -128,7 +128,7 @@ export const streamVideoHandeler = async (req: Request, res: Response) => {
     'Accept-Ranges': 'bytes',
     'Content-length': contentLenght,
     'Content-Type': `video/${video.extension}`, // MIME TYPE
-    // 'Cross-Origin-Resource-Policy': 'cross-origin', //This is to give OK to the client that runs on different port thank server
+    'Cross-Origin-Resource-Policy': 'cross-origin', //This is to give OK to the client that runs on different port thank server
   };
 
   // Header that says that this is a partial response

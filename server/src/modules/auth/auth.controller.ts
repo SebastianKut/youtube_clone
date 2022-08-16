@@ -29,14 +29,14 @@ export const loginHandeler = async (
       .status(StatusCodes.UNAUTHORIZED)
       .send('Invalid email or password');
 
-  const payload = {
+  const userPayload = {
     username: user.username,
     email: user.email,
     id: String(user._id),
   };
 
   // sign jwt
-  const jwt = signJwt(payload);
+  const jwt = signJwt(userPayload);
 
   // add a cookie to the response
   res.cookie('accessToken', jwt, {
@@ -50,5 +50,5 @@ export const loginHandeler = async (
 
   // send response
 
-  return res.status(StatusCodes.OK).send(jwt);
+  return res.status(StatusCodes.OK).send(userPayload);
 };

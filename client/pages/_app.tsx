@@ -5,6 +5,10 @@ import { MantineProvider } from '@mantine/core';
 import { NotificationsProvider } from '@mantine/notifications';
 import { NextPage } from 'next';
 import { ReactElement, ReactNode } from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { UserContextProvider } from '../context/context';
+
+const queryClient = new QueryClient();
 
 // Creating new types with layouts by extending existing Next types
 type NextPageWithLayout = NextPage & {
@@ -39,11 +43,15 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         }}
       >
         <NotificationsProvider>
-          {getLayout(
-            <main>
-              <Component {...pageProps} />
-            </main>
-          )}
+          <QueryClientProvider client={queryClient}>
+            <UserContextProvider>
+              {getLayout(
+                <main>
+                  <Component {...pageProps} />
+                </main>
+              )}
+            </UserContextProvider>
+          </QueryClientProvider>
         </NotificationsProvider>
       </MantineProvider>
     </>
@@ -51,3 +59,8 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 }
 
 export default MyApp;
+
+// FInish this tutorial first
+// Add get initial props, get current user here and pass to all the pages in the app component
+// Get rid of useContext because it requires refresh anyways
+// when using getServerSIdeProps it will always get invoked from the server
