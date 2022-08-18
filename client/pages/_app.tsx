@@ -42,25 +42,20 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
           colorScheme: 'light',
         }}
       >
-        <NotificationsProvider>
-          <QueryClientProvider client={queryClient}>
-            <UserContextProvider>
+        <QueryClientProvider client={queryClient}>
+          <UserContextProvider>
+            <NotificationsProvider>
               {getLayout(
                 <main>
                   <Component {...pageProps} />
                 </main>
               )}
-            </UserContextProvider>
-          </QueryClientProvider>
-        </NotificationsProvider>
+            </NotificationsProvider>
+          </UserContextProvider>
+        </QueryClientProvider>
       </MantineProvider>
     </>
   );
 }
 
 export default MyApp;
-
-// FInish this tutorial first
-// Add get initial props, get current user here and pass to all the pages in the app component
-// Get rid of useContext because it requires refresh anyways
-// when using getServerSIdeProps it will always get invoked from the server

@@ -46,7 +46,7 @@ function LoginPage() {
     },
     onSuccess: (data) => {
       hideNotification('login');
-      router.push('/');
+      router.replace('/');
       console.log('User data', data);
     },
     onError: (err: AxiosError) => {

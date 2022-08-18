@@ -1,22 +1,10 @@
-import {
-  Button,
-  Group,
-  Modal,
-  Progress,
-  Stack,
-  Switch,
-  Text,
-  TextInput,
-} from '@mantine/core';
+import { Button, Group, Modal, Progress, Text } from '@mantine/core';
 import { Dropzone, MIME_TYPES } from '@mantine/dropzone';
-import { useForm } from '@mantine/hooks';
-import { AxiosError } from 'axios';
-import React, { Dispatch, SetStateAction, useState } from 'react';
+
+import React, { useState } from 'react';
 import { useMutation } from 'react-query';
 import { ArrowBigUpLine } from 'tabler-icons-react';
-import { updateVideo, uploadVideo } from '../api';
-import { useVideoContext } from '../context/videos';
-import { Video } from '../types';
+import { uploadVideo } from '../api';
 import EditVideoForm from './EditVideoForm';
 
 function UploadVideo() {

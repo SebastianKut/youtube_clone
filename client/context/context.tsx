@@ -1,11 +1,6 @@
 import { Loader } from '@mantine/core';
 import { createContext, ReactNode, useContext } from 'react';
-import {
-  QueryObserverResult,
-  RefetchOptions,
-  RefetchQueryFilters,
-  useQuery,
-} from 'react-query';
+import { useQuery } from 'react-query';
 import { getUser } from '../api';
 import { QueryKeys, User } from '../types';
 

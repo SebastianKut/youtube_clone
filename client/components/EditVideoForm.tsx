@@ -1,10 +1,10 @@
 import { Button, Stack, Switch, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/hooks';
 import { AxiosError } from 'axios';
+import { useRouter } from 'next/router';
 import { Dispatch, SetStateAction } from 'react';
 import { useMutation } from 'react-query';
 import { updateVideo } from '../api';
-import { useVideoContext } from '../context/videos';
 import { Video } from '../types';
 
 function EditVideoForm({
@@ -14,8 +14,6 @@ function EditVideoForm({
   videoId: string;
   setOpened: Dispatch<SetStateAction<boolean>>;
 }) {
-  const { refetch } = useVideoContext();
-
   const { onSubmit, getInputProps } = useForm({
     initialValues: {
       title: '',
@@ -24,12 +22,13 @@ function EditVideoForm({
     },
   });
 
+  const router = useRouter();
   type input = Parameters<typeof updateVideo>;
 
   const { mutate } = useMutation<Video, AxiosError, input[0]>(updateVideo, {
     onSuccess: () => {
       setOpened(false);
-      refetch();
+      router.replace('/');
     },
   });
 

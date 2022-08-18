@@ -25,5 +25,5 @@ export const registerUserHandeler = async (
 };
 
 export const showUserHandeler = async (req: Request, res: Response) => {
-  return res.send(req.currentUser);
+  return res.send({ currentUser: req.currentUser || null });
 };

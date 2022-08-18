@@ -1,7 +1,8 @@
 import { Anchor, Box, Header } from '@mantine/core';
+import { useSetState } from '@mantine/hooks';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useUserContext } from '../context/context';
 import UploadVideo from './UploadVideo';
 
