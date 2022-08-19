@@ -17,10 +17,21 @@ export const registerUser = async (payload) => {
 };
 
 export const loginUser = async (payload) => {
-  const res = await axios.post(authBase, payload, {
+  const res = await axios.post(`${authBase}/login`, payload, {
     withCredentials: true, //`withCredentials` indicates whether or not cross-site Access-Control requests
     // should be made using credentials with cookies
   });
+  return res.data;
+};
+
+export const logoutUser = async () => {
+  const res = await axios.post(
+    `${authBase}/logout`,
+    {},
+    {
+      withCredentials: true,
+    }
+  );
   return res.data;
 };
 

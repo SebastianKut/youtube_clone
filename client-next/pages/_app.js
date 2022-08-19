@@ -24,5 +24,5 @@ MyApp.getInitialProps = async (appContext) => {
   const request = appContext.ctx.req;
   const response = await getUser(isRequestFromServer(), request);
 
-  return { user: response?.currentUser };
+  return { user: response?.currentUser || response };
 };

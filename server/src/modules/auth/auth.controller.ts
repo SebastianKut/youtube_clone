@@ -52,3 +52,8 @@ export const loginHandeler = async (
 
   return res.status(StatusCodes.OK).send(userPayload);
 };
+
+export const logoutHandeler = async (req: Request, res: Response) => {
+  res.clearCookie('accessToken');
+  return res.status(StatusCodes.OK).send({ currentUser: null });
+};
