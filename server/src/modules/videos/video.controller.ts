@@ -5,6 +5,7 @@ import { createVideo, findVideo, findVideos } from './video.service';
 import { Video } from './video.model';
 import fs from 'fs';
 import { UpdateVideoBody, UpdateVideoParams } from './video.schema';
+import { message } from '../../utils/message';
 
 const MIME_TYPES = ['video/mp4'];
 
@@ -27,7 +28,9 @@ export const uploadVideoHandeler = async (req: Request, res: Response) => {
   // Listen for file upload
   bb.on('file', async (_, file, info) => {
     if (!MIME_TYPES.includes(info.mimeType)) {
-      return res.status(StatusCodes.BAD_REQUEST).send('Invalid file type');
+      return res
+        .status(StatusCodes.BAD_REQUEST)
+        .send(message('Invalid file type'));
     }
 
     const extension = info.mimeType.split('/')[1];
@@ -68,13 +71,15 @@ export const updateVideoHandeler = async (
   const video = await findVideo(videoId);
 
   if (!video) {
-    return res.status(StatusCodes.NOT_FOUND).send('Video not found');
+    return res.status(StatusCodes.NOT_FOUND).send(message('Video not found'));
   }
 
   const videoOwnerId = String(video.owner);
 
   if (loggedUserId !== videoOwnerId) {
-    return res.status(StatusCodes.UNAUTHORIZED).send('Unathorised');
+    return res
+      .status(StatusCodes.UNAUTHORIZED)
+      .send(message('You are unathorised to edit this video'));
   }
 
   video.title = title;
@@ -100,13 +105,15 @@ export const streamVideoHandeler = async (req: Request, res: Response) => {
   const range = req.headers.range;
 
   if (!range) {
-    return res.status(StatusCodes.BAD_REQUEST).send('Range must be provided');
+    return res
+      .status(StatusCodes.BAD_REQUEST)
+      .send(message('Range must be provided'));
   }
 
   const video = await findVideo(videoId);
 
   if (!video) {
-    return res.status(StatusCodes.NOT_FOUND).send('Video not found');
+    return res.status(StatusCodes.NOT_FOUND).send(message('Video not found'));
   }
 
   const filePath = getPath(video.videoId, video.extension);

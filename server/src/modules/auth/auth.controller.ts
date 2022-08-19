@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
+import { message } from '../../utils/message';
 import { findUserByEmail } from '../user/user.service';
 import { LoginUserBody } from './auth.schema';
 import { signJwt } from './auth.utils';
@@ -20,14 +21,14 @@ export const loginHandeler = async (
   if (!user)
     return res
       .status(StatusCodes.UNAUTHORIZED)
-      .send('Invalid email or password');
+      .send(message('Invalid email or password'));
 
   // verify password
   const passwordVerified = await user.passwordMatch(password);
   if (!passwordVerified)
     return res
       .status(StatusCodes.UNAUTHORIZED)
-      .send('Invalid email or password');
+      .send(message('Invalid email or password'));
 
   const userPayload = {
     username: user.username,

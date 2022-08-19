@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { registerUser } from '../../api';
 import { useGlobalContext } from '../../context/Context';
+import useRequest from '../../hooks/useRequest';
 
 function RegisterPage() {
   const { user } = useGlobalContext();
@@ -17,15 +18,17 @@ function RegisterPage() {
     if (user) router.push('/');
   }, []);
 
+  const { sendRequest, errors } = useRequest({
+    requestFunction: registerUser,
+    data: formData,
+    onSuccess: () => {
+      router.push('/auth/login');
+    },
+  });
+
   const handleRegister = async (e) => {
     e.preventDefault();
-
-    try {
-      await registerUser(formData);
-      router.push('/auth/login');
-    } catch (error) {
-      console.log(error);
-    }
+    sendRequest();
   };
 
   return (
@@ -88,9 +91,6 @@ function RegisterPage() {
               }
               value={formData.password}
             />
-            <p className="text-red-500 text-xs italic">
-              Please choose a password.
-            </p>
           </div>
           <div className="mb-6">
             <label
@@ -125,6 +125,7 @@ function RegisterPage() {
             </a>
           </div>
         </form>
+        {errors}
       </div>
     </>
   );

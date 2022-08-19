@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { loginUser } from '../../api';
 import { useGlobalContext } from '../../context/Context';
+import useRequest from '../../hooks/useRequest';
 
 function LoginPage() {
   const { dispatch, user } = useGlobalContext();
@@ -15,19 +16,21 @@ function LoginPage() {
     if (user) router.push('/');
   }, []);
 
-  const handleSignIn = async (e) => {
-    e.preventDefault();
-
-    try {
-      const user = await loginUser(formData);
+  const { sendRequest, errors } = useRequest({
+    requestFunction: loginUser,
+    data: formData,
+    onSuccess: (data) => {
       dispatch({
         type: 'SET_USER',
-        payload: user,
+        payload: data,
       });
       router.push('/');
-    } catch (error) {
-      console.log(error);
-    }
+    },
+  });
+
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+    sendRequest();
   };
 
   return (
@@ -72,9 +75,6 @@ function LoginPage() {
               }
               value={formData.password}
             />
-            <p className="text-red-500 text-xs italic">
-              Please choose a password.
-            </p>
           </div>
           <div className="flex items-center justify-between">
             <button
@@ -91,6 +91,7 @@ function LoginPage() {
             </a>
           </div>
         </form>
+        {errors}
       </div>
     </>
   );
