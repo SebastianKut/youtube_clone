@@ -64,11 +64,18 @@ function SubmitModal() {
             )}
 
             {progress > 0 && (
-              <p>
-                {progress === 100
-                  ? 'Video uploaded'
-                  : `Loading progress: ${progress}%`}
-              </p>
+              <div className="w-full h-6 bg-slate-300 ">
+                <div
+                  className="bg-blue-400 h-full whitespace-nowrap"
+                  style={{ width: progress + '%' }}
+                >
+                  <p className="text-black ">
+                    {progress === 100
+                      ? 'Video uploaded'
+                      : `Loading progress: ${progress}%`}
+                  </p>
+                </div>
+              </div>
             )}
             {showEditForm && (
               <EditForm

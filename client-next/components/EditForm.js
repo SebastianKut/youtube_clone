@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { updateVideo } from '../api';
 import useRequest from '../hooks/useRequest';
+import { useRouter } from 'next/router';
 
 function EditForm({
   videoId,
@@ -13,6 +14,7 @@ function EditForm({
     description: '',
     published: false,
   });
+
   const { sendRequest, errors } = useRequest({
     requestFunction: updateVideo,
     data: { videoId, ...formData },
@@ -20,10 +22,11 @@ function EditForm({
       setShowEditForm(false);
       setProgress(0);
       setShowUploadForm(false);
+      router.push(`/watch/${videoId}`);
     },
   });
 
-  console.log(formData.published);
+  const router = useRouter();
 
   const handleSubmit = (e) => {
     e.preventDefault();
