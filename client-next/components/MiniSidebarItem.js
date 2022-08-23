@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 function MiniSidebarItem({ icon: Icon, label, linkHref }) {
   return (
-    <li>
+    <li className="hover:bg-gray-200">
       <Link href={linkHref}>
         <a className="flex flex-col h-14 justify-center items-center">
           <Icon className="mb-1 h-6" />
