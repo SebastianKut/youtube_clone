@@ -6,6 +6,7 @@ function VideoPage({ videoId }) {
   return (
     <div>
       <video
+        className="w-full"
         src={`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/videos/${query.videoId}`}
         width="800px"
         height="auto"

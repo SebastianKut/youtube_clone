@@ -12,6 +12,11 @@ export const reducer = (state, action) => {
         ...state,
         user: action.payload,
       };
+    case 'SHOW_UPLOAD_FORM':
+      return {
+        ...state,
+        showUploadForm: action.payload,
+      };
     default:
       throw new Error(`Unknown action: ${action.type}`);
   }

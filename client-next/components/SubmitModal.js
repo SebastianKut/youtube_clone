@@ -3,9 +3,9 @@ import { uploadVideo } from '../api';
 import useRequest from '../hooks/useRequest';
 import FormData from 'form-data';
 import EditForm from './EditForm';
+import { CloudUploadIcon } from '@heroicons/react/outline';
 
 function SubmitModal() {
-  const [showUploadForm, setshowUploadForm] = useState(false);
   const [video, setVideo] = useState(null);
   const [progress, setProgress] = useState(0);
   const [showEditForm, setShowEditForm] = useState(false);
@@ -39,59 +39,62 @@ function SubmitModal() {
   };
 
   return (
-    <>
-      <button
-        onClick={() => setshowUploadForm(true)}
-        className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-      >
-        Upload video
-      </button>
-      {showUploadForm && (
-        <div className="max-w-sm rounded overflow-hidden shadow-lg">
-          <div className="px-6 py-4">
-            <div className="font-bold text-xl mb-2">Add your video</div>
-
-            {progress === 0 && (
-              <form onSubmit={handleUpload}>
-                <input
-                  onChange={(e) => setVideo(e.target.files[0])}
-                  type="file"
-                  name="video"
-                  accept=".mp4"
-                />
-                <button type="submit">Upload</button>
-              </form>
-            )}
-
-            {progress > 0 && (
-              <div className="w-full h-6 bg-slate-300 ">
-                <div
-                  className="bg-blue-400 h-full whitespace-nowrap"
-                  style={{ width: progress + '%' }}
-                >
-                  <p className="text-black ">
-                    {progress === 100
-                      ? 'Video uploaded'
-                      : `Loading progress: ${progress}%`}
-                  </p>
-                </div>
-              </div>
-            )}
-            {showEditForm && (
-              <EditForm
-                videoId={videoId}
-                setShowEditForm={setShowEditForm}
-                setShowUploadForm={setshowUploadForm}
-                setProgress={setProgress}
-              />
-            )}
-
-            {errors}
+    <div className="absolute top-100 right-36 z-50 bg-white">
+      <div className="max-w-sm rounded overflow-hidden shadow-lg">
+        <div className="p-6">
+          <div className=" text-xl mb-2 border-b pb-2 w-96">
+            Upload your video
           </div>
+
+          {progress === 0 && (
+            <form
+              onSubmit={handleUpload}
+              className="flex flex-col items-center justify-between h-80 pt-2"
+            >
+              <input
+                onChange={(e) => setVideo(e.target.files[0])}
+                type="file"
+                name="video"
+                accept=".mp4"
+              />
+              <div className="flex justify-center items-center border border-blue-600 bg-blue-600 hover:bg-blue-500  hover:border-none w-full p-2">
+                <button
+                  type="submit"
+                  className="flex justify-center items-center h-full w-full text-sm text-white"
+                >
+                  <CloudUploadIcon className="h-6 mr-2" />
+                  <p className="uppercase">Upload</p>
+                </button>
+              </div>
+            </form>
+          )}
+
+          {progress > 0 && (
+            <div className="h-10 bg-slate-300 ">
+              <div
+                className="bg-blue-600 h-full whitespace-nowrap flex items-center"
+                style={{ width: progress + '%' }}
+              >
+                <p className="text-white ml-4">
+                  {progress === 100
+                    ? 'Video uploaded'
+                    : `Loading progress: ${progress}%`}
+                </p>
+              </div>
+            </div>
+          )}
+
+          {showEditForm && (
+            <EditForm
+              videoId={videoId}
+              setShowEditForm={setShowEditForm}
+              setProgress={setProgress}
+            />
+          )}
+          {errors}
         </div>
-      )}
-    </>
+      </div>
+    </div>
   );
 }
-
 export default SubmitModal;

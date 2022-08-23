@@ -3,9 +3,8 @@ import { getVideos } from '../api';
 import VideoCard from '../components/VideoCard';
 
 const IndexPage = ({ videos }) => {
-  console.log(videos);
   return (
-    <div className="grid grid-cols-4 gap-4">
+    <div className="grid grid-cols-4 gap-4 bg-gray-100">
       {videos.map((video) => {
         return (
           <VideoCard

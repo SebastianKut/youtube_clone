@@ -1,9 +1,15 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { MenuIcon, SearchIcon, UserCircleIcon } from '@heroicons/react/solid';
+import {
+  MenuIcon,
+  SearchIcon,
+  UserCircleIcon,
+  UserAddIcon,
+  LogoutIcon,
+  VideoCameraIcon,
+} from '@heroicons/react/outline';
 import { logoutUser } from '../api';
 import { useGlobalContext } from '../context/Context';
-import SubmitModal from './SubmitModal';
 
 function Header() {
   const { user, dispatch } = useGlobalContext();
@@ -28,6 +34,14 @@ function Header() {
     }
   };
 
+  const handleUploadForm = (e) => {
+    e.preventDefault();
+
+    dispatch({
+      type: 'SHOW_UPLOAD_FORM',
+      payload: true,
+    });
+  };
   return (
     <div className="flex justify-between h-14">
       <div className="flex justify-start w-1/4  p-3">
@@ -55,33 +69,47 @@ function Header() {
         </form>
       </div>
 
-      <ul className="flex w-1/4 p-4">
+      <ul className="flex justify-end w-1/4 p-2">
         {!user ? (
           <>
-            <li className="w-full">
-              <Link href="/auth/login">
-                <a className="flex justify-end h-full w-full w-1/2">
-                  <UserCircleIcon />
-                  <p>Register</p>
+            <li className="w-28 border border-blue-600 mx-2">
+              <Link href="/auth/register">
+                <a className="flex justify-center items-center h-full text-sm text-blue-600">
+                  <UserAddIcon className="h-6 mr-2" />
+                  <p className="uppercase">Register</p>
                 </a>
               </Link>
             </li>
-            <li className="w-full">
+            <li className="w-28 border border-blue-600 mx-2">
               <Link href="/auth/login">
-                <a className="flex justify-end h-full w-1/2">
-                  <UserCircleIcon />
-                  <p>Sign In</p>
+                <a className="flex justify-center items-center h-full text-sm text-blue-600">
+                  <UserCircleIcon className="h-6 mr-2" />
+                  <p className="uppercase">Sign In</p>
                 </a>
               </Link>
             </li>
           </>
         ) : (
           <>
-            <li>
-              <SubmitModal />
+            <li className="w-1/3 flex justify-center border border-blue-600 mx-2  bg-blue-600 hover:bg-blue-500 hover:border-none">
+              <button
+                onClick={handleUploadForm}
+                className="flex justify-center items-center h-full text-sm text-white"
+              >
+                <VideoCameraIcon className="h-6 mr-2" />
+                <p className="uppercase">Upload</p>
+              </button>
             </li>
-            <li>
-              <button onClick={handleLogout}>Logout</button>
+            <li className="w-1/3 flex justify-center border border-blue-600 mx-2">
+              <Link href="/auth/login">
+                <button
+                  onClick={handleLogout}
+                  className="flex justify-center items-center h-full text-sm text-blue-600"
+                >
+                  <LogoutIcon className="h-6 mr-2" />
+                  <p className="uppercase">Sign out</p>
+                </button>
+              </Link>
             </li>
           </>
         )}

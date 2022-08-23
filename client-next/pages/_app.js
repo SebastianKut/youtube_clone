@@ -7,6 +7,7 @@ import { getUser, isRequestFromServer } from '../api';
 function MyApp({ Component, pageProps, user }) {
   const initialState = {
     user: user,
+    showUploadForm: false,
   };
 
   return (
