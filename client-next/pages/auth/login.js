@@ -34,7 +34,7 @@ function LoginPage() {
   };
 
   return (
-    <div className="w-full max-w-xs flex flex-col items-center">
+    <div className="w-full flex flex-col items-center pt-12">
       <h1 className="block text-gray-700 text-lg font-bold mb-2">
         Please sign in to your account
       </h1>

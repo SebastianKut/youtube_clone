@@ -32,7 +32,7 @@ function RegisterPage() {
   };
 
   return (
-    <div className="w-full max-w-xs flex flex-col items-center">
+    <div className="w-full flex flex-col items-center p-12">
       <h1 className="block text-gray-700 text-lg font-bold mb-2">
         Register your new account
       </h1>

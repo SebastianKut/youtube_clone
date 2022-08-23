@@ -17,6 +17,11 @@ export const reducer = (state, action) => {
         ...state,
         showUploadForm: action.payload,
       };
+    case 'SHOW_SIDEBAR':
+      return {
+        ...state,
+        showSidebar: action.payload,
+      };
     default:
       throw new Error(`Unknown action: ${action.type}`);
   }

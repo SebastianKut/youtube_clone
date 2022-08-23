@@ -1,0 +1,20 @@
+// Dummy data for UX
+export const tags = [
+  'JavaScript',
+  'programming',
+  'html',
+  'css',
+  'developer',
+  'programmer',
+  'coding',
+  'coder',
+  'software',
+  'design',
+  'webdesign',
+  'uidesign',
+  'designer',
+  'python',
+  'business',
+  'php',
+  'reactjs',
+];

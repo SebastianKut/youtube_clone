@@ -9,5 +9,7 @@ export const findVideo = (videoId: Video['videoId']) => {
 };
 
 export const findVideos = () => {
-  return VideoModel.find({ published: true }).populate('owner').lean(); //lean returns plain Old Javascript Object
+  return VideoModel.find({ published: true })
+    .populate('owner', 'username email') // only certain fields
+    .lean(); //lean returns plain Old Javascript Object
 };
