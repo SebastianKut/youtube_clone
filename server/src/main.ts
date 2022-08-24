@@ -3,14 +3,14 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import { connectToDatabase, disconnectFromDatabase } from './utils/database';
 import { logger } from './utils/logger';
-import { CORS_ORIGIN } from './constants';
 import helmet from 'helmet';
 import { userRoute } from './modules/user/user.route';
 import { authRoute } from './modules/auth/auth.route';
 import { videoRoute } from './modules/videos/video.route';
 import { deserializeUser } from './middleware/deserializeUser';
+import { config } from './config';
 
-const PORT = process.env.PORT || 4000;
+const PORT = config.port || 4000;
 
 const app = express();
 
@@ -18,7 +18,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(
   cors({
-    origin: CORS_ORIGIN,
+    origin: config.cors_origin,
     credentials: true, //allow cookies to work
   })
 );

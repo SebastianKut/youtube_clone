@@ -1,12 +1,13 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
+import { config } from '../../config';
 import { message } from '../../utils/message';
 import { findUserByEmail } from '../user/user.service';
 import { LoginUserBody } from './auth.schema';
 import { signJwt } from './auth.utils';
 
-const DOMAIN = process.env.DOMAIN || 'localhost';
-const SECURE = process.env.PRODUCTION ? true : false;
+const DOMAIN = config.domain || 'localhost';
+const SECURE = config.production ? true : false;
 
 export const loginHandeler = async (
   req: Request<{}, {}, LoginUserBody>,

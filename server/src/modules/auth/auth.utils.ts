@@ -1,7 +1,8 @@
 import jwt from 'jsonwebtoken';
+import { config } from '../../config';
 
-const JWT_KEY = process.env.JWT_KEY || 'changeme';
-const EXPIRES_IN = process.env.EXPIRES_IN || '1d';
+const JWT_KEY = config.jwt_key || 'changeme';
+const EXPIRES_IN = config.expiress_in || '1d';
 
 export const signJwt = (payload: string | Buffer | object) => {
   return jwt.sign(payload, JWT_KEY, { expiresIn: EXPIRES_IN });

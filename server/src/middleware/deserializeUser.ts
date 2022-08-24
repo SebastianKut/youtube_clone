@@ -1,7 +1,6 @@
 // Takes cookie(jwt inside it) from the browser and fetches user object to attach to Request
 
 import { Request, Response, NextFunction } from 'express';
-import { JwtPayload } from 'jsonwebtoken';
 import { verifyJwt } from '../modules/auth/auth.utils';
 
 interface UserPayload {

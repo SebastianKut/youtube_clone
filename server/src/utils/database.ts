@@ -1,9 +1,11 @@
 import mongoose from 'mongoose';
+import { config } from '../config';
 import { logger } from './logger';
 
 const DB_CONNECTION =
-  process.env.DB_CONNECTION || 'mongodb://localhost:27017/youtube-clone';
+  config.db_connection || 'mongodb://localhost:27017/youtube-clone';
 
+console.log('Database connection', DB_CONNECTION);
 export const connectToDatabase = async () => {
   try {
     await mongoose.connect(DB_CONNECTION);
