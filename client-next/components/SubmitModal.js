@@ -39,7 +39,7 @@ function SubmitModal() {
   };
 
   return (
-    <div className="absolute top-100 right-36 z-50 bg-white">
+    <div className="absolute top-100 md:right-36 right-0 z-50 bg-white">
       <div className="max-w-sm rounded overflow-hidden shadow-lg">
         <div className="p-6">
           <div className=" text-xl mb-2 border-b pb-2 w-96">

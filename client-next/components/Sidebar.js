@@ -18,7 +18,7 @@ import SidebarItem from './SidebarItem';
 
 function Sidebar() {
   return (
-    <div className="min-w-fit pr-4 pl-1">
+    <div className="min-w-fit pr-4 pl-1 hidden md:block">
       <ul className="flex flex-col py-2 border-b border-gray">
         <SidebarItem icon={HomeIcon} label="Home" linkHref="/" />
         <SidebarItem icon={GlobeIcon} label="Explore" linkHref="/" />

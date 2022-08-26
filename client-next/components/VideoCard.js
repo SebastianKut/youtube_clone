@@ -25,11 +25,11 @@ function VideoCard({ videoId, title, description, owner, createdAt }) {
         </a>
       </Link>
       <div className="flex justify-start py-3">
-        <div className="h-8 min-w-fit">
+        <div className="h-8 min-w-fit relative ">
           <Image
             height={32}
             width={32}
-            className="h-full rounded-full "
+            className="h-full rounded-full"
             src="/avatar_placeholder.jpg"
             alt=""
           />

@@ -55,7 +55,7 @@ function Header() {
 
   return (
     <div className="flex justify-between h-14 px-5 ">
-      <div className="flex justify-start w-1/4  p-3">
+      <div className="flex justify-start md:w-1/4  p-3">
         <button onClick={handleSidebar} className="h-full w-28 mr-4 ">
           <MenuIcon className="h-6" />
         </button>
@@ -67,7 +67,7 @@ function Header() {
         </Link>
       </div>
 
-      <div className="flex justify-center items-center w-2/4 p-2">
+      <div className="hidden md:flex justify-center items-center w-2/4 p-2">
         <form className="h-full w-3/4 flex justify-between border border-gray-300 pl-2">
           <input
             type="text"
@@ -86,16 +86,16 @@ function Header() {
             <li className="w-28 border border-blue-600 mx-2">
               <Link href="/auth/register">
                 <a className="flex justify-center items-center h-full text-sm text-blue-600">
-                  <UserAddIcon className="h-6 mr-2" />
-                  <p className="uppercase">Register</p>
+                  <UserAddIcon className="h-4 sm:h-5 md:h-6 xl:mr-2" />
+                  <p className="uppercase hidden xl:block">Register</p>
                 </a>
               </Link>
             </li>
             <li className="w-28 border border-blue-600 mx-2">
               <Link href="/auth/login">
                 <a className="flex justify-center items-center h-full text-sm text-blue-600">
-                  <UserCircleIcon className="h-6 mr-2" />
-                  <p className="uppercase">Sign In</p>
+                  <UserCircleIcon className="h-4 sm:h-5 md:h-6 xl:mr-2" />
+                  <p className="uppercase hidden xl:block">Sign In</p>
                 </a>
               </Link>
             </li>
@@ -107,8 +107,8 @@ function Header() {
                 onClick={handleUploadForm}
                 className="flex justify-center items-center h-full text-sm text-white"
               >
-                <VideoCameraIcon className="h-6 mr-2" />
-                <p className="uppercase">Upload</p>
+                <VideoCameraIcon className="h-4 sm:h-5 md:h-6 xl:mr-2" />
+                <p className="uppercase hidden xl:block">Upload</p>
               </button>
             </li>
             <li className="w-1/3 flex justify-center border border-blue-600 mx-2">
@@ -117,8 +117,8 @@ function Header() {
                   onClick={handleLogout}
                   className="flex justify-center items-center h-full text-sm text-blue-600"
                 >
-                  <LogoutIcon className="h-6 mr-2" />
-                  <p className="uppercase">Sign out</p>
+                  <LogoutIcon className="h-4 sm:h-5 md:h-6 xl:mr-2" />
+                  <p className="uppercase hidden xl:block">Sign out</p>
                 </button>
               </Link>
             </li>

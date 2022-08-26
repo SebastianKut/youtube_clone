@@ -7,7 +7,7 @@ const IndexPage = ({ videos }) => {
   return (
     <div>
       <TagBar />
-      <div className="grid grid-cols-4 gap-4 bg-gray-100 py-3 px-9">
+      <div className="grid xl:grid-cols-4 gap-4 lg:grid-cols-3 md:grid-cols-2 bg-gray-100 py-3 px-9">
         {videos.map((video) => {
           return (
             <VideoCard
