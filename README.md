@@ -1,5 +1,7 @@
 # Fullstack Youtube Clone app
 
+LIVE DEMO: https://skyoutube-clone-frontend.herokuapp.com/
+
 Fullstack youtube clone app build with Node.js (Express), Next JS, Mongo DB, Typescript and Tailwindcss. Supports uploading and streaming mp4 files in chunks of 1MB.
 
 ## Setup
