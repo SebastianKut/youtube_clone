@@ -17,3 +17,10 @@ To run client and server on the local machine do the following:
 4. If you connecting to local mongoDB on your machine remember to start it first
 
 5. Run server inside server folder and client inside client-next folder with "npm run dev"
+
+TO BE DELETED
+
+- add small dummy videos to the page
+- deploy server to heroku
+- deploy next client to vercel
+- work on my cv and and both projects, update portfolio website with projects and cv and update my linkedin

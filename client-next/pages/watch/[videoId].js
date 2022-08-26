@@ -23,9 +23,9 @@ function VideoPage() {
         />
       </div>
 
-      <div className="flex justify-between h-24 py-4  border-b border-gray w-[1024px] mx-auto">
+      <div className="flex justify-between py-4 border-b border-gray w-[1024px] mx-auto ">
         <div className="w-1/2 flex flex-col justify-between">
-          <h1 className="text-lg">{query.title}</h1>
+          <h1 className="text-lg mb-4">{query.title}</h1>
           <p className="text-sm text-gray-500">
             955,125 views • {formatDate(query.createdAt)}
           </p>

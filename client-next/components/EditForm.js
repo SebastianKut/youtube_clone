@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { useGlobalContext } from '../context/Context';
 
 function EditForm({ videoId, setShowEditForm, setProgress }) {
-  const { dispatch } = useGlobalContext();
+  const { user, dispatch } = useGlobalContext();
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -15,14 +15,23 @@ function EditForm({ videoId, setShowEditForm, setProgress }) {
   const { sendRequest, errors } = useRequest({
     requestFunction: updateVideo,
     data: { videoId, ...formData },
-    onSuccess: () => {
+    onSuccess: (data) => {
       setShowEditForm(false);
       setProgress(0);
       dispatch({
         type: 'SHOW_UPLOAD_FORM',
         payload: false,
       });
-      router.push(`/watch/${videoId}`);
+      console.log(data);
+      router.push({
+        pathname: `/watch/${videoId}`,
+        query: {
+          title: data.title,
+          description: data.description,
+          owner: user.username,
+          createdAt: data.createdAt,
+        },
+      });
     },
   });
 

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { shortenText } from '../utils/shortenText';
 import { timeAgo } from '../utils/timeAgo';
 
 function VideoCard({ videoId, title, description, owner, createdAt }) {
@@ -22,8 +23,8 @@ function VideoCard({ videoId, title, description, owner, createdAt }) {
           />
         </a>
       </Link>
-      <div className="flex py-3">
-        <div className="h-8">
+      <div className="flex justify-start py-3">
+        <div className="h-8 min-w-fit">
           <img
             className="h-full rounded-full "
             src="/avatar_placeholder.jpg"
@@ -31,7 +32,9 @@ function VideoCard({ videoId, title, description, owner, createdAt }) {
           />
         </div>
         <div className="px-3">
-          <h1 className="text-md font-semibold leading-3 mb-3">{title}</h1>
+          <h1 className="text-md font-semibold mb-3 text-ellipsis">
+            {shortenText(title)}
+          </h1>
           <p className="text-sm text-gray-500">
             {owner.username} • {timeAgo.format(Date.parse(createdAt))}
           </p>
