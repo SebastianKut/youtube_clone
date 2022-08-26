@@ -31,7 +31,7 @@ app.use('/api/videos/', videoRoute);
 
 const server = app.listen(PORT, async () => {
   await connectToDatabase();
-  logger.info(`Server listening at http://localhost:${PORT}`);
+  logger.info(`Server listening at port: ${PORT}`);
 });
 
 const signals = ['SIGTERM', 'SIGINT'];

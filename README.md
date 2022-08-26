@@ -18,9 +18,12 @@ To run client and server on the local machine do the following:
 
 5. Run server inside server folder and client inside client-next folder with "npm run dev"
 
+## Note
+
+Since the backend of the live demo version is deployed to free version on heroku with domain herokuapp.com it is not allowed to set cookies therefore user credentials with jason web token will not be saved in the browser. More info: https://devcenter.heroku.com/articles/cookies-and-herokuapp-com
+If you want cookies to be saved to the browser after you deploy your app to heroku you will need a custom domain
+
 TO BE DELETED
 
-- add small dummy videos to the page
-- deploy server to heroku
 - deploy next client to vercel
 - work on my cv and and both projects, update portfolio website with projects and cv and update my linkedin
