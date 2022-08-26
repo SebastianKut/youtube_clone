@@ -16,7 +16,7 @@ function RegisterPage() {
 
   useEffect(() => {
     if (user) router.push('/');
-  }, []);
+  }, [router, user]);
 
   const { sendRequest, errors } = useRequest({
     requestFunction: registerUser,

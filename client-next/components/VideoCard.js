@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { shortenText } from '../utils/shortenText';
 import { timeAgo } from '../utils/timeAgo';
@@ -25,7 +26,9 @@ function VideoCard({ videoId, title, description, owner, createdAt }) {
       </Link>
       <div className="flex justify-start py-3">
         <div className="h-8 min-w-fit">
-          <img
+          <Image
+            height={32}
+            width={32}
             className="h-full rounded-full "
             src="/avatar_placeholder.jpg"
             alt=""

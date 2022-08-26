@@ -14,7 +14,7 @@ function LoginPage() {
 
   useEffect(() => {
     if (user) router.push('/');
-  }, []);
+  }, [router, user]);
 
   const { sendRequest, errors } = useRequest({
     requestFunction: loginUser,
@@ -89,7 +89,7 @@ function LoginPage() {
             className="inline-block align-baseline  text-xs text-blue-500 hover:text-blue-800"
             href="#"
           >
-            Don't have an account? - Register
+            Do not have an account? - Register
           </a>
         </div>
       </form>

@@ -7,6 +7,7 @@ import {
 import { CheckCircleIcon } from '@heroicons/react/solid';
 import { useRouter } from 'next/router';
 import { formatDate } from '../../utils/dateFormater';
+import Image from 'next/image';
 
 function VideoPage() {
   const { query } = useRouter();
@@ -53,7 +54,9 @@ function VideoPage() {
       <div className="flex justify-between py-4 w-[1024px] mx-auto border-b border-gray h-[230px]">
         <div className=" flex w-4/6 justify-start">
           <div className="mr-3 min-w-fit">
-            <img
+            <Image
+              height={48}
+              width={48}
               className="h-12 rounded-full"
               src="/avatar_placeholder.jpg"
               alt="avatar"

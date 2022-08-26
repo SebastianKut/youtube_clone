@@ -10,6 +10,7 @@ import {
 } from '@heroicons/react/outline';
 import { logoutUser } from '../api';
 import { useGlobalContext } from '../context/Context';
+import Image from 'next/image';
 
 function Header() {
   const { user, showSidebar, showUploadForm, dispatch } = useGlobalContext();
@@ -61,7 +62,7 @@ function Header() {
 
         <Link href="/">
           <a>
-            <img className="h-full" src="youtube_logo.jpg" alt="" />
+            <img className="h-full" src="/youtube_logo.jpg" alt="" />
           </a>
         </Link>
       </div>
